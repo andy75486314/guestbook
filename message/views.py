@@ -18,10 +18,9 @@ class MessageDetail(DetailView):
 class MessageCreate(CreateView):
     model = Message
     fields = '__all__'          # 顯示 *所有* 欄位
-    success_url = '/message/'   # 新增成功後，導向留言列表頁面
+    success_url='/message/'   # 新增成功後，導向留言列表頁面
     # 未指定 template_name 屬性，預設使用 message/message_form.html
-    def get_success_url(self):
-        return reverse("msg_list")
+    
 
 class MessageDetail(DetailView):
     model=Message
@@ -29,6 +28,7 @@ class MessageDetail(DetailView):
         return reverse("msg_list")        
 
 class MessageDelete(DeleteView):
-    models=Message
-    def get_success_url(self):
-        return reverse("msg_list")
+    model=Message
+    template_name="message/message_confirm.html"
+    success_url='/message/' 
+    
