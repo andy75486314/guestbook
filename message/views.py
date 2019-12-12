@@ -27,3 +27,8 @@ class MessageDetail(DetailView):
     model=Message
     def get_success_url(self):
         return reverse("msg_list")        
+
+class MessageDelete(DeleteView):
+    models=Message
+    def get_success_url(self):
+        return reverse("msg_list")
